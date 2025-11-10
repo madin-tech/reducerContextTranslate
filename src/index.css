@@ -48,5 +48,9 @@ header{
  justify-content: space-between;
 }
 .nav a.active{
-  color: red;
+  color: blue;
+  text-decoration: underline;
+}
+.nav a{
+  text-decoration: none;
 }

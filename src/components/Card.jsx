@@ -3,10 +3,8 @@ import { Button } from "bootstrap/dist/js/bootstrap.bundle.min";
 import { Context } from "../context";
 import { useContext } from "react";
 
-
 const Card = ({ product, isLoading }) => {
- 
-const {cart, setCart} = useContext(Context)
+  const { cart, setCart } = useContext(Context);
   if (isLoading) {
     return (
       <div className="card" aria-hidden="true">
@@ -30,46 +28,47 @@ const {cart, setCart} = useContext(Context)
       </div>
     );
   }
-  const inCart = cart.find((item) => item.id == product.id);
+  const inCart = cart?.find((item) => item.id == product.id);
   function add(product) {
     setCart([...cart, { ...product, count: 1 }]);
   }
 
-  function inc(){
-  const newCart = cart.map((c)=>{
-    if(c.id==product.id){
-    return {
-      ...c,
-      count: c.count + 1,
-    };
-    }
-  })
- return setCart(newCart);
-  }
-  function dec(){
-      if (inCart.count == 1) {
-        const newData = cart.filter((c) => c.id !== product.id);
-        setCart(newData);
-      }else{
-           const decCart = cart.map((c) => {
-             if (c.id == product.id)
-               return {
-                 ...c,
-                 count: c.count - 1,
-               };
-           });
-           return setCart(decCart);
+  function inc() {
+    const newCart = cart?.map((c) => {
+      if (c.id == product.id) {
+        return {
+          ...c,
+          count: c.count + 1,
+        };
+      } else {
+        return c;
       }
-
+    });
+    return setCart(newCart);
   }
-  console.log(cart);
-  
+  function dec() {
+    if (inCart.count == 1) {
+      const newData = cart.filter((c) => c.id !== product.id);
+      setCart(newData);
+    } else {
+      const decCart = cart.map((c) => {
+        if (c.id == product.id)
+          return {
+            ...c,
+            count: c.count - 1,
+          };
+      });
+      return setCart(decCart);
+    }
+  }
+  console.log(product);
+
   return (
     <div
       className="card"
       style={{
         width: "18rem",
-        height: `600px`,
+        maxHeight: `600px`,
         marginTop: `30px`,
       }}
     >
@@ -86,12 +85,14 @@ const {cart, setCart} = useContext(Context)
           <h5 className="card-title" style={{}}>
             {product.title}{" "}
           </h5>
-          <p className="card-text">{product.description}</p>
+          <h6 className="card-text">
+            <b>Cost: </b>${product.price}
+          </h6>
         </div>
         {!inCart && (
           <a
             className="btn btn-primary"
-            style={{ width: `100%` }}
+            style={{ width: `100%`, marginTop: `10px` }}
             onClick={() => add(product)}
           >
             Add to Cart
@@ -104,6 +105,7 @@ const {cart, setCart} = useContext(Context)
               flexDirection: `row`,
               justifyContent: `space-between`,
               alignItems: `center`,
+              marginTop: `10px`,
             }}
           >
             <button
@@ -111,20 +113,26 @@ const {cart, setCart} = useContext(Context)
                 padding: `0px 10px`,
                 display: `flex`,
                 alignItems: `center`,
+                justifyContent: `center`,
                 border: `none`,
+                borderRadius: `3px`,
+                color: `white`,
               }}
               className="bg-primary"
               onClick={dec}
             >
               -
             </button>
-            <h3>{inCart.count}</h3>
+            <h5>{inCart.count}</h5>
             <button
               style={{
                 padding: `0px 10px`,
                 display: `flex`,
                 alignItems: `center`,
+                justifyContent: `center`,
                 border: `none`,
+                borderRadius: `3px`,
+                color: `white`,
               }}
               className="bg-primary"
               onClick={inc}

@@ -22,13 +22,13 @@ const Header = () => {
             className="nav"
             style={{ display: `flex`, justifyContent: `space-between` }}
           >
-            <NavLink to="/" className="primary">
+            <NavLink to="/" >
               Home
             </NavLink>
-            <NavLink to="/About" className="primary">
+            <NavLink to="/About" >
               About
             </NavLink>
-            <NavLink to="/Details" className="primary">Details</NavLink>
+            <NavLink to="/Details">Details</NavLink>
             <button
               type="button"
               className="btn btn-primary position-relative"
