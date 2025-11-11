@@ -13,8 +13,22 @@ const Carts = ({ card }) => {
     });
     setCart(incremented);
   }
-  console.log(cart);
-
+  
+  function dec(id){
+  const decremented = cart.map((c)=>{
+        if(c.id==id){
+            return {
+                ...c,
+                count: c.count - 1,
+            }
+        }
+    })
+    setCart(decremented);
+  }
+function delBtn(id){
+ const deletedArr = cart.filter(c=>c.id!==id);
+ setCart(deletedArr);
+}
   return (
     <div>
       <div
@@ -31,7 +45,7 @@ const Carts = ({ card }) => {
           </div>
           <div className="d-sm-inline-flex">
             <div className="card-body">
-              <h6 style={{fontSize:`18px`}} className="card-title">
+              <h6 style={{ fontSize: `18px` }} className="card-title">
                 <b>Name: </b>
                 {card.title}
               </h6>
@@ -60,6 +74,8 @@ const Carts = ({ card }) => {
                     alignItems: `center`,
                     border: `none`,
                   }}
+                  onClick={() => dec(card.id)}
+                  disabled={card.count==0}
                 >
                   -
                 </button>
@@ -86,8 +102,20 @@ const Carts = ({ card }) => {
                   <h5>PRICE:</h5>
                   <h5>${card.price * card.count}</h5>
                 </div>
-                <button style={{backgroundColor:`red`, display:`flex`, alignItems:`center`, justifyContent:`center`}}>
-                  <img src={del} style={{height:`20px`, width:`20px`}} alt="" />
+                <button
+                  style={{
+                    backgroundColor: `red`,
+                    display: `flex`,
+                    alignItems: `center`,
+                    justifyContent: `center`,
+                  }}
+                  onClick={()=>delBtn(card.id)}
+                >
+                  <img
+                    src={del}
+                    style={{ height: `20px`, width: `20px` }}
+                    alt=""
+                  />
                 </button>
               </div>
             </div>

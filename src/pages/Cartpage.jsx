@@ -26,6 +26,7 @@ const Cartpage = () => {
               flexDirection: `column`,
               alignItems: `center`,
               justifyContent: `center`,
+              marginBottom:`70px`
             }}
           >
             <img src={cat} alt="" style={{ height: `200px`, width: `250px` }} />
@@ -34,7 +35,7 @@ const Cartpage = () => {
         )}
         {cart.length > 0 && (
           <div style={{ display: `flex`, justifyContent: `space-between` }}>
-            <div style={{ marginTop: `100px` }}>
+            <div style={{ marginTop: `100px`, marginBottom:`40px` }}>
               {cart?.map((card) => {
                 return (
                   <div key={card.id}>

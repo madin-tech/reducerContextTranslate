@@ -1,32 +1,26 @@
-import i18n, { Translation } from "react-i18next";
+import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
+import enJson from "./languages/en.json";
+import uzJson from "./languages/uz.json";
 
-const recources = {
-en:{
-    Translation:{
-        "welcome": "welcome to react",
-        
-    }
-},
-ru:{
-    Translation:{
-        "welcome": "dobro pojalovat",
-        
-    }
-},
-uz:{
-    Translation:{
-        "welcome": "Hush kelibsiz",
-        
-    },
-}
+const resources = {
+  en: {
+    translation: enJson,
+  },
+  uz: {
+    translation: uzJson,
+  },
 };
 
-i18n.use(initReactI18next).init({
-  recources,
-  lng: "uz",
-  interpolation: {
-    escapeValue: false, // react already safes from xss
-  },
-});
+i18n
+  .use(initReactI18next) 
+  .init({
+    resources,
+    lng: "uz",
+
+    interpolation: {
+      escapeValue: false,
+    },
+  });
+
 export default i18n;

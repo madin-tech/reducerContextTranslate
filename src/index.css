@@ -54,3 +54,30 @@ header{
 .nav a{
   text-decoration: none;
 }
+
+.carousel3{
+  height: 100%;
+  width: 100%;
+  background-image: url("../src/assets/carousel3.webp");
+
+}
+.footerA{
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.footerBox{
+  display: flex;
+  flex-direction: row;
+  gap: 100px;
+}
+.footer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+footer{
+  background-color: lightblue;
+  padding: 85px 0;
+}
