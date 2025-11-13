@@ -2,14 +2,42 @@ import { useParams } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 import DetailCom from "../components/DetailCom";
 import dayjs from "dayjs";
-
+import cat from "../assets/cat2.svg";
 
 const Detail = () => {
   const { isLoading, data, error } = useFetch("https://dummyjson.com/products");
   const { id } = useParams();
 
-  if (isLoading) return <h1>Loading...</h1>;
-  if (error) return <h1>{error.message || "Xatolik"}</h1>;
+  if (isLoading) return (
+    <div
+      style={{
+        marginTop: `100px`,
+        display: `flex`,
+        flexDirection: `column`,
+        alignItems: `center`,
+        justifyContent: `center`,
+        marginBottom: `70px`,
+      }}
+    >
+      <img src={cat} alt="" style={{ height: `200px`, width: `250px` }} />
+      <h3 className="text-primary">Loading...</h3>
+    </div>
+  );
+  if (error) return (
+    <div
+      style={{
+        marginTop: `100px`,
+        display: `flex`,
+        flexDirection: `column`,
+        alignItems: `center`,
+        justifyContent: `center`,
+        marginBottom: `70px`,
+      }}
+    >
+      <img src={cat} alt="" style={{ height: `200px`, width: `250px` }} />
+      <h3 className="text-primary">{error.message}</h3>
+    </div>
+  );
 
  
   const product = data?.find((p) => p.id === Number(id));
