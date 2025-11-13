@@ -77,7 +77,37 @@ header{
   justify-content: space-between;
   align-items: center;
 }
+
+
 footer{
   background-color: lightblue;
   padding: 85px 0;
+}
+
+
+.detail-swiper {
+  height: 500px;
+ width: 500px;
+ margin-bottom: 100px;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #444;
+  color: #fff;
+  font-size: 18px;
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
 }

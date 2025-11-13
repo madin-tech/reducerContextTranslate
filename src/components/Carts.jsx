@@ -21,6 +21,8 @@ const Carts = ({ card }) => {
                 ...c,
                 count: c.count - 1,
             }
+        }else{
+          return c;
         }
     })
     setCart(decremented);

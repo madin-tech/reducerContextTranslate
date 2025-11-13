@@ -1,13 +1,19 @@
 import { Button } from "bootstrap/dist/js/bootstrap.bundle.min";
-
+import { useNavigate } from "react-router-dom";
 import { Context } from "../context";
 import { useContext } from "react";
 
 const Card = ({ product, isLoading }) => {
+    const navigate = useNavigate();
+    
   const { cart, setCart } = useContext(Context);
+  function openDetail(id){
+   navigate(`/details/${id}`);
+
+  }
   if (isLoading) {
     return (
-      <div className="card" aria-hidden="true">
+      <div className="card" aria-hidden="true" >
         <img src="..." className="card-img-top " alt="..." />
         <div className="card-body">
           <h5 className="card-title placeholder-glow">
@@ -29,8 +35,9 @@ const Card = ({ product, isLoading }) => {
     );
   }
   const inCart = cart?.find((item) => item.id == product.id);
-  function add(product) {
+  function add(e,product) {
     setCart([...cart, { ...product, count: 1 }]);
+    e.stopPropagation();
   }
 
   function inc() {
@@ -71,6 +78,7 @@ const Card = ({ product, isLoading }) => {
         maxHeight: `600px`,
         marginTop: `30px`,
       }}
+      onClick={() => openDetail(product.id)}
     >
       <img src={product.thumbnail} className="card-img-top height:`70px`" />
       <div
@@ -93,7 +101,7 @@ const Card = ({ product, isLoading }) => {
           <a
             className="btn btn-primary"
             style={{ width: `100%`, marginTop: `10px` }}
-            onClick={() => add(product)}
+            onClick={(e) => add(e,product)}
           >
             Add to Cart
           </a>
