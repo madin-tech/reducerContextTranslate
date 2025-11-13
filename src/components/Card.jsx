@@ -40,7 +40,8 @@ const Card = ({ product, isLoading }) => {
     e.stopPropagation();
   }
 
-  function inc() {
+  function inc(e) {
+     e.stopPropagation();
     const newCart = cart?.map((c) => {
       if (c.id == product.id) {
         return {
@@ -53,7 +54,8 @@ const Card = ({ product, isLoading }) => {
     });
     return setCart(newCart);
   }
-  function dec() {
+  function dec(e) {
+    e.stopPropagation();
     if (inCart.count == 1) {
       const newData = cart.filter((c) => c.id !== product.id);
       setCart(newData);
@@ -101,7 +103,7 @@ const Card = ({ product, isLoading }) => {
           <a
             className="btn btn-primary"
             style={{ width: `100%`, marginTop: `10px` }}
-            onClick={(e) => add(e,product)}
+            onClick={(e) => add(e, product)}
           >
             Add to Cart
           </a>
@@ -127,7 +129,7 @@ const Card = ({ product, isLoading }) => {
                 color: `white`,
               }}
               className="bg-primary"
-              onClick={dec}
+              onClick={(e) => dec(e)}
             >
               -
             </button>
@@ -143,7 +145,7 @@ const Card = ({ product, isLoading }) => {
                 color: `white`,
               }}
               className="bg-primary"
-              onClick={inc}
+              onClick={(e) => inc(e)}
             >
               +
             </button>
