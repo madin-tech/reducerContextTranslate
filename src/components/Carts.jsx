@@ -35,7 +35,12 @@ function delBtn(id){
     <div>
       <div
         className="card mb-3"
-        style={{ maxWidth: "860px", padding: `15px`, marginTop: `10px` }}
+        style={{
+          maxWidth: "860px",
+          padding: `15px`,
+          marginTop: `10px`,
+          height: `300px`,
+        }}
       >
         <div style={{ display: `flex`, alignItems: `center` }}>
           <div className="col-sm-4">
@@ -46,7 +51,7 @@ function delBtn(id){
             />
           </div>
           <div className="d-sm-inline-flex">
-            <div className="card-body">
+            <div className="card-body" style={{ height: `100px` }}>
               <h6 style={{ fontSize: `18px` }} className="card-title">
                 <b>Name: </b>
                 {card.title}
@@ -77,7 +82,7 @@ function delBtn(id){
                     border: `none`,
                   }}
                   onClick={() => dec(card.id)}
-                  disabled={card.count==0}
+                  disabled={card.count == 0}
                 >
                   -
                 </button>
@@ -102,7 +107,7 @@ function delBtn(id){
                   style={{ display: `flex`, alignItems: `center`, gap: `5px` }}
                 >
                   <h5>PRICE:</h5>
-                  <h5>${card.price * card.count}</h5>
+                  <h5>${Math.round(card.price * card.count *100)/100}</h5>
                 </div>
                 <button
                   style={{
@@ -111,7 +116,7 @@ function delBtn(id){
                     alignItems: `center`,
                     justifyContent: `center`,
                   }}
-                  onClick={()=>delBtn(card.id)}
+                  onClick={() => delBtn(card.id)}
                 >
                   <img
                     src={del}

@@ -4,7 +4,7 @@ import { useContext, useMemo } from "react";
 import cat from "../assets/cat2.svg";
 const Cartpage = () => {
   const { cart } = useContext(Context);
-  let total = cart.count * cart.price;
+  let total = Math.round(cart.count * cart.price *100)/100;
   console.log(total);
   const totalPrice = useMemo(() => {
     const total = cart?.reduce((sum, currVal) => {
@@ -48,7 +48,7 @@ const Cartpage = () => {
             <div
               className="card text-bg-primary mb-3"
               style={{
-                maxWidth: "18rem",
+                width: "300px",
                 maxHeight: `400px`,
                 marginTop: `120px`,
               }}
