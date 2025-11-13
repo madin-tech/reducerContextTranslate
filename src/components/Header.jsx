@@ -1,14 +1,19 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Context } from "../context";
 import { useTranslation } from "react-i18next";
-import Cartpage from "../pages/Cartpage";
+
 const Header = () => {
     const {t} = useTranslation();
     const {i18n} = useTranslation();
+    useEffect(()=>{
+  const currLang =  localStorage.getItem("lang");
+  i18n.changeLanguage(currLang);
+    },[i18n])
+    
     function changeLang(e){
    i18n.changeLanguage(e.target.value);
-
+localStorage.setItem("lang", e.target.value)
     }
   const { cart } = useContext(Context);
   const navigate = useNavigate();

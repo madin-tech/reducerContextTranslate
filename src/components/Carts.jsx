@@ -3,6 +3,10 @@ import { Context } from "../context";
 import del from "../assets/delete.svg";
 const Carts = ({ card }) => {
   const { cart, setCart } = useContext(Context);
+
+
+
+
   function inc(id) {
     const incremented = cart.map((c) => {
       if (c.id == id) {
