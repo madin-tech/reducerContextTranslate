@@ -31,7 +31,6 @@ const Header = () => {
             <NavLink to="/">{t("header.Home")}</NavLink>
             <NavLink to="/About">{t("header.About")}</NavLink>
             <NavLink to="/Details">{t("header.Log In")}</NavLink>
-            <NavLink to="/details" >details</NavLink>
             <select name="" onChange={changeLang} id="">
               <option value="uz">uz</option>
               <option value="en">en</option>

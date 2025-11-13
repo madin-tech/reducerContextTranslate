@@ -26,7 +26,7 @@ const Cartpage = () => {
               flexDirection: `column`,
               alignItems: `center`,
               justifyContent: `center`,
-              marginBottom:`70px`
+              marginBottom: `70px`,
             }}
           >
             <img src={cat} alt="" style={{ height: `200px`, width: `250px` }} />
@@ -35,7 +35,7 @@ const Cartpage = () => {
         )}
         {cart.length > 0 && (
           <div style={{ display: `flex`, justifyContent: `space-between` }}>
-            <div style={{ marginTop: `100px`, marginBottom:`40px` }}>
+            <div style={{ marginTop: `100px`, marginBottom: `40px` }}>
               {cart?.map((card) => {
                 return (
                   <div key={card.id}>
@@ -58,9 +58,15 @@ const Cartpage = () => {
                 <h5 className="card-title">
                   <b>TOTAL:</b> ${totalPrice}
                 </h5>
-                <button style={{ width: `100%`, backgroundColor: `white` }}>
-                  BUY
-                </button>
+                <div style={{display:`flex`, alignItems:`center`, justifyContent:`center`, marginTop:`20px`}}>
+                  <button
+                    type="button"
+                    class="btn btn-outline-light"
+                    style={{ width:`100%` }}
+                  >
+                    Buy
+                  </button>
+                </div>
               </div>
             </div>
           </div>
